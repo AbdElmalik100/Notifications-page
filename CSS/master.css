@@ -1,0 +1,217 @@
+/* Global Rules */
+* {
+    box-sizing: border-box;
+}
+:root {
+    /* Primary Colors */
+    --Red: hsl(1, 90%, 64%);
+    --Blue: hsl(219, 85%, 26%);
+
+    /* Neutral Colors */
+    --White: hsl(0, 0%, 100%);
+    --Very-light-grayish-blue: hsl(210, 60%, 98%);
+    --Light-grayish-blue-1: hsl(211, 68%, 94%);
+    --Light-grayish-blue-2: hsl(205, 33%, 90%);
+    --Grayish-blue: hsl(219, 14%, 63%);
+    --Dark-grayish-blue: hsl(219, 12%, 42%);
+    --Very-dark-blue: hsl(224, 21%, 14%);
+}
+body {
+    font-size: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--Very-light-grayish-blue);
+    height: 150vh;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/* Grid System */
+@media (min-width: 576px) { /* Small Devices => Landscape Phones */
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) { /* Medium Devices => Tablets */
+    .container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) { /* Desktops */
+    .container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) { /* Large Screens */
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--White);
+    padding: 25px;
+    width: 50%;
+    border-radius: 5px;
+    margin: 50px 0;
+}
+.card header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.card header .notify {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.card header .notify h3 {
+    color: var(--Very-dark-blue);
+    font-weight: 900;
+    margin: 0;
+}
+.card header .notify span {
+    padding: 3px 10px;
+    background-color: var(--Blue);
+    color: var(--White);
+    border-radius: 5px;
+}
+.card header .mark-btn {
+    color: var(--Dark-grayish-blue);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card header .mark-btn:hover {
+    color: var(--Blue);
+}
+
+.card .box {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.card .box.active {
+    background-color: var(--Very-light-grayish-blue);
+}
+.card .box.active .info::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--Red);
+    right: -10px;
+    top: 65%;
+    transform: translateY(-50%);
+}
+.card .box:not(:last-child) {
+    margin-bottom: 10px;
+}
+.card .box img {
+    width: 50px;
+}
+.card .box .msg {
+    font-size: 15px;
+}
+.card .box .msg .info {
+    margin-bottom: 5px;
+    position: relative;
+    width: fit-content;
+}
+.card .box .msg .info .name {
+    margin-right: 5px;
+    font-weight: bold;
+    color: var(--Very-dark-blue);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card .box .msg .info .name:hover {
+    color: var(--Blue);
+}
+.card .box .msg .info .action {
+    color: var(--Dark-grayish-blue);
+    font-weight: 500;
+    margin-right: 5px;
+    position: relative;
+}
+.card .box .msg .info .title {
+    color: var(--Dark-grayish-blue);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+.card .box .msg .info .title:hover {
+    color: var(--Blue);
+}
+.card .box .msg .info .group {
+    color: var(--Blue);
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card .box .msg .time {
+    color: var(--Grayish-blue);
+}
+.card .box .msg .message {
+    padding: 20px;
+    border: 1px solid var(--Light-grayish-blue-2);
+    margin-top: 20px;
+    border-radius: 5px;
+    color: var(--Dark-grayish-blue);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card .box .msg .message:hover {
+    background-color: var(--Light-grayish-blue-1);
+}
+.card .box .picture {
+    position: absolute;
+    right: calc(0% + 15px);
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 5px 5px 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.card .box .picture:hover {
+    background-color: var(--Light-grayish-blue-2);
+    border-radius: 10px;
+}
+
+
+@media (max-width: 575px) {
+    .card {
+        margin: 0;
+        width: 100%;
+        position: initial;
+        transform: none;
+    }
+    .card .box .msg {
+        font-size: 13px;
+    }
+    .card .box .picture {
+        transform: none;
+        position: relative;
+        right: 0;
+    }
+    .card .box .picture img {
+        width: 29px;
+    }
+}
